@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdsrivfprlqvt"]
+
+[ext_resource type="Script" uid="uid://b2t4k6miop7u0" path="res://juego.gd" id="1_0e48y"]
+[ext_resource type="PackedScene" uid="uid://c64ue7jw3wbbj" path="res://level.tscn" id="2_0e48y"]
+[ext_resource type="PackedScene" uid="uid://cyvt8bj7jo145" path="res://gotita.tscn" id="2_epypp"]
+
+[node name="Prueba" type="Node2D"]
+script = ExtResource("1_0e48y")
+gotita_scene = ExtResource("2_epypp")
+
+[node name="level" parent="." instance=ExtResource("2_0e48y")]
+
+[node name="TimerGotita" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="TimerGotita" to="." method="_on_timer_gotita_timeout"]

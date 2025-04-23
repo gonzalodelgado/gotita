@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyvt8bj7jo145"]
+
+[ext_resource type="Texture2D" uid="uid://cwhq31jkdm4ba" path="res://icon.svg" id="1_swqj7"]
+[ext_resource type="Script" uid="uid://dltgu7rk6fk8p" path="res://gotita.gd" id="1_tevhy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_swqj7"]
+friction = 0.15
+absorbent = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tevhy"]
+radius = 11.0
+
+[node name="Gotita" type="RigidBody2D"]
+mass = 0.035
+physics_material_override = SubResource("PhysicsMaterial_swqj7")
+lock_rotation = true
+script = ExtResource("1_tevhy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tevhy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1.19209e-07)
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("1_swqj7")
