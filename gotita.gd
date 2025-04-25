@@ -11,8 +11,14 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var size = $CollisionShape2D.shape.radius
+	if position.x - size <= 0:
+		position.x = size + 1
+		dir = 1
+		linear_velocity.x = min_speed * dir
+	elif position.x + size >= get_viewport_rect().size.x:
+		position.x = get_viewport_rect().size.x - size - 1
+		dir = -1
+		linear_velocity.x = min_speed * dir
 	if abs(linear_velocity.x) < min_speed:
 		linear_velocity.x = min_speed * dir
 
-	if position.x + size <= 0 or position.x - size >= get_viewport_rect().size.x:
-		dir *= -1

@@ -16,4 +16,5 @@ func _on_timer_gotita_timeout() -> void:
 	var cantidad_gotitas = get_children().filter(func(child): return child.scene_file_path == gotita_scene.resource_path).size()
 	if cantidad_gotitas < max_gotitas:
 		var gotita = gotita_scene.instantiate()
+		gotita.position.x = 10
 		add_child(gotita)
