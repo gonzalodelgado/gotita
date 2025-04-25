@@ -1,6 +1,6 @@
 extends Node2D
 
-var max_gotitas = 10
+@export var max_gotitas = 1
 @export var gotita_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
