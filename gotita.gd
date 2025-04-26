@@ -46,5 +46,8 @@ func _process(delta: float) -> void:
 		position.x = get_viewport_rect().size.x - size - 1
 		dir = -1
 		linear_velocity.x = min_speed * dir
+
+	if position.y + size <= 20:
+		position.y = 20
 	if abs(linear_velocity.x) < min_speed:
 		linear_velocity.x = min_speed * dir
