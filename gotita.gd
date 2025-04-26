@@ -17,9 +17,11 @@ func _process(delta: float) -> void:
 			physics_material_override.friction = 0.15
 			physics_material_override.absorbent = true
 			physics_material_override.bounce = 0
-			physics_material_override.rough = false
 			mass = 0.035
 			min_speed = 64
+			gravity_scale = 1.0
+			apply_force(Vector2(0, 1))
+			# linear_velocity.y = -1
 		Estados.SOLIDO:
 			physics_material_override.friction = 0.01
 			physics_material_override.bounce = 0.2
@@ -27,12 +29,14 @@ func _process(delta: float) -> void:
 			physics_material_override.rough = true
 			mass = 0.035
 			min_speed = 128
+			gravity_scale = 1.0
+			# linear_velocity.y = -1
 		Estados.GASEOSO:
 			physics_material_override.friction = 0
 			physics_material_override.bounce = 0.1
 			physics_material_override.rough = false
-			mass = -0.035
 			min_speed = 32
+			gravity_scale = -0.4
 	var size = $CollisionShape2D.shape.radius
 	if position.x - size <= 0:
 		position.x = size + 1
