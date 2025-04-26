@@ -40,9 +40,10 @@ func _on_boton_liquido_pressed() -> void:
 
 
 func _on_area_fuego_body_entered(body:Node2D) -> void:
-	cambiar_estado_gotita(body, "GASEOSO")
-
+	if body.scene_file_path == gotita_scene.resource_path:
+		cambiar_estado_gotita(body, "GASEOSO")
 
 func _on_area_liquido_body_entered(body:Node2D) -> void:
-	print("BODY entro liquido", body)
-	cambiar_estado_gotita(body, "LIQUIDO")
+	if body.scene_file_path == gotita_scene.resource_path:
+		print("BODY entro liquido", body)
+		cambiar_estado_gotita(body, "LIQUIDO")
