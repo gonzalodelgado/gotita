@@ -9,4 +9,4 @@ collision_mask = 3
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 material = SubResource("CanvasItemMaterial_5xgho")
 position = Vector2(-43, -43)
-polygon = PackedVector2Array(43, 127, 43, 513, 842, 512, 843, 64, 710, 144, 541, 179, 466, 150, 413, 111, 365, 107, 331, 113, 300, 143, 243, 171, 195, 150, 157, 127)
+polygon = PackedVector2Array(43, 127, 43, 513, 842, 512, 843, 64, 710, 144, 466, 52, 466, 150, 413, 111, 365, 107, 331, 113, 300, 143, 243, 171, 195, 150, 157, 127)
