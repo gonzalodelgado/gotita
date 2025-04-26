@@ -14,4 +14,29 @@ gotita_scene = ExtResource("2_epypp")
 [node name="TimerGotita" type="Timer" parent="."]
 autostart = true
 
+[node name="BotonGaseoso" type="Button" parent="."]
+offset_left = 138.0
+offset_top = 449.0
+offset_right = 212.0
+offset_bottom = 480.0
+text = "Gaseoso"
+
+[node name="BotonSolido" type="Button" parent="."]
+offset_left = 386.0
+offset_top = 449.0
+offset_right = 455.0
+offset_bottom = 480.0
+text = "Sólido
+"
+
+[node name="BotonLiquido" type="Button" parent="."]
+offset_left = 637.0
+offset_top = 449.0
+offset_right = 705.0
+offset_bottom = 480.0
+text = "Líquido"
+
 [connection signal="timeout" from="TimerGotita" to="." method="_on_timer_gotita_timeout"]
+[connection signal="pressed" from="BotonGaseoso" to="." method="_on_boton_gaseoso_pressed"]
+[connection signal="pressed" from="BotonSolido" to="." method="_on_boton_solido_pressed"]
+[connection signal="pressed" from="BotonLiquido" to="." method="_on_boton_liquido_pressed"]

@@ -18,3 +18,20 @@ func _on_timer_gotita_timeout() -> void:
 		var gotita = gotita_scene.instantiate()
 		gotita.position.x = 10
 		add_child(gotita)
+
+
+func cambiar_estado(estado):
+	var gotitas = get_children().filter(func(child): return child.scene_file_path == gotita_scene.resource_path)
+	for gotita in gotitas:
+		gotita.estado = gotita.Estados.get(estado)
+
+func _on_boton_gaseoso_pressed() -> void:
+	cambiar_estado("GASEOSO")
+
+
+func _on_boton_solido_pressed() -> void:
+	cambiar_estado("SOLIDO")
+
+
+func _on_boton_liquido_pressed() -> void:
+	cambiar_estado("LIQUIDO")
