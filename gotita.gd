@@ -26,17 +26,20 @@ func _integrate_forces(state):
 			physics_material_override.bounce = 0
 			min_speed = 64
 			gravity_scale = 1.0
+			set_collision_mask_value(1, false)
 		Estados.SOLIDO:
 			physics_material_override.friction = 0.01
 			physics_material_override.bounce = 0.2
 			physics_material_override.absorbent = true
 			min_speed = 128
 			gravity_scale = 1.0
+			set_collision_mask_value(1, true)
 		Estados.GASEOSO:
 			physics_material_override.friction = 0
 			physics_material_override.bounce = 0.1
 			min_speed = 32
 			gravity_scale = -0.4
+			set_collision_mask_value(1, false)
 
 	if position.x - size <= 0:
 		position.x = size
