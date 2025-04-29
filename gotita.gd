@@ -12,42 +12,45 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	pass
+
+
+func _integrate_forces(state):
+	var size = $CollisionShape2D.shape.radius
+	var gravity : Vector2 = ProjectSettings.get_setting("physics/2d/default_gravity_vector")
+
 	match estado:
 		Estados.LIQUIDO:
 			physics_material_override.friction = 0.15
 			physics_material_override.absorbent = true
 			physics_material_override.bounce = 0
-			mass = 0.035
 			min_speed = 64
 			gravity_scale = 1.0
-			apply_force(Vector2(0, 1))
-			# linear_velocity.y = -1
 		Estados.SOLIDO:
 			physics_material_override.friction = 0.01
 			physics_material_override.bounce = 0.2
 			physics_material_override.absorbent = true
-			physics_material_override.rough = true
-			mass = 0.035
 			min_speed = 128
 			gravity_scale = 1.0
-			# linear_velocity.y = -1
 		Estados.GASEOSO:
 			physics_material_override.friction = 0
 			physics_material_override.bounce = 0.1
-			physics_material_override.rough = false
 			min_speed = 32
 			gravity_scale = -0.4
-	var size = $CollisionShape2D.shape.radius
+
 	if position.x - size <= 0:
-		position.x = size + 1
+		position.x = size
 		dir = 1
 		linear_velocity.x = min_speed * dir
 	elif position.x + size >= get_viewport_rect().size.x:
-		position.x = get_viewport_rect().size.x - size - 1
+		position.x = get_viewport_rect().size.x - size
 		dir = -1
 		linear_velocity.x = min_speed * dir
 
-	if position.y + size <= 20:
-		position.y = 20
 	if abs(linear_velocity.x) < min_speed:
 		linear_velocity.x = min_speed * dir
+
+	if position.y - size <= 2:
+		position.y = size + 3
+		if estado != Estados.GASEOSO:
+			state.apply_impulse(gravity*2)
