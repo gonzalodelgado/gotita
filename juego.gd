@@ -19,13 +19,11 @@ func _on_timer_gotita_timeout() -> void:
 		gotita.position.x = 10
 		add_child(gotita)
 
-func cambiar_estado_gotita(gotita, estado):
-	gotita.estado = gotita.Estados.get(estado)
 
 func cambiar_estado(estado):
 	var gotitas = get_children().filter(func(child): return child.scene_file_path == gotita_scene.resource_path)
 	for gotita in gotitas:
-		gotita.estado = gotita.Estados.get(estado)
+		gotita.cambiar_estado(estado)
 
 func _on_boton_gaseoso_pressed() -> void:
 	cambiar_estado("GASEOSO")
@@ -41,9 +39,9 @@ func _on_boton_liquido_pressed() -> void:
 
 func _on_area_fuego_body_entered(body:Node2D) -> void:
 	if body.scene_file_path == gotita_scene.resource_path:
-		cambiar_estado_gotita(body, "GASEOSO")
+		body.cambiar_estado("GASEOSO")
 
 func _on_area_liquido_body_entered(body:Node2D) -> void:
 	if body.scene_file_path == gotita_scene.resource_path:
 		print("BODY entro liquido", body)
-		cambiar_estado_gotita(body, "LIQUIDO")
+		body.cambiar_estado("LIQUIDO")

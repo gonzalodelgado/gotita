@@ -61,3 +61,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 
 	if estado != Estados.GASEOSO and position.y - size <= 2:
 		state.apply_impulse(gravity*2)
+
+
+func cambiar_estado(estado_str: String):
+	estado = Estados.get(estado_str)
