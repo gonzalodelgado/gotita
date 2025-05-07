@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bok2bmtmo81vj"]
+
+[ext_resource type="Script" uid="uid://byajlikpdv3cy" path="res://area_cambio_estado.gd" id="1_vgee1"]
+[ext_resource type="PackedScene" uid="uid://cyvt8bj7jo145" path="res://gotita.tscn" id="2_334jd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
+
+[node name="areaCambioEstado" type="Area2D"]
+script = ExtResource("1_vgee1")
+gotita_scene = ExtResource("2_334jd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_epypp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
