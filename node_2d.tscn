@@ -1,14 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdsrivfprlqvt"]
+[gd_scene load_steps=7 format=3 uid="uid://cdsrivfprlqvt"]
 
 [ext_resource type="Script" uid="uid://b2t4k6miop7u0" path="res://juego.gd" id="1_0e48y"]
 [ext_resource type="PackedScene" uid="uid://c64ue7jw3wbbj" path="res://level.tscn" id="2_0e48y"]
 [ext_resource type="PackedScene" uid="uid://cyvt8bj7jo145" path="res://gotita.tscn" id="2_epypp"]
 [ext_resource type="AudioStream" uid="uid://bc55x7jlwl24y" path="res://afro-blue-five-003-26720.mp3" id="4_0hol4"]
 [ext_resource type="AudioStream" uid="uid://wts28ef5ak0g" path="res://ice-43072.mp3" id="5_q6r6c"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
+[ext_resource type="PackedScene" uid="uid://b44i3ij5i4ani" path="res://control_cambio_estado.tscn" id="6_kdubu"]
 
 [node name="Prueba" type="Node2D"]
 script = ExtResource("1_0e48y")
@@ -51,22 +48,29 @@ parameters/looping = false
 [node name="Ice Break" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_q6r6c")
 
-[node name="areaFuego" type="Area2D" parent="."]
+[node name="ControlCambioEstado" parent="." instance=ExtResource("6_kdubu")]
+offset_left = 655.0
+offset_top = 410.0
+offset_right = 713.0
+offset_bottom = 441.0
+text = "Gota"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="areaFuego"]
-position = Vector2(257, 75)
-shape = SubResource("RectangleShape2D_epypp")
+[node name="ControlCambioEstado2" parent="." instance=ExtResource("6_kdubu")]
+offset_left = 394.0
+offset_top = 408.0
+offset_right = 452.0
+offset_bottom = 439.0
+text = "Nieve"
+estado = "SOLIDO"
 
-[node name="areaLiquido" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="areaLiquido"]
-position = Vector2(298, 12)
-shape = SubResource("RectangleShape2D_0hol4")
+[node name="ControlCambioEstado3" parent="." instance=ExtResource("6_kdubu")]
+offset_left = 150.0
+offset_top = 405.0
+offset_bottom = 436.0
+text = "Fuego"
+estado = "GASEOSO"
 
 [connection signal="timeout" from="TimerGotita" to="." method="_on_timer_gotita_timeout"]
 [connection signal="pressed" from="BotonGaseoso" to="." method="_on_boton_gaseoso_pressed"]
 [connection signal="pressed" from="BotonSolido" to="." method="_on_boton_solido_pressed"]
 [connection signal="pressed" from="BotonLiquido" to="." method="_on_boton_liquido_pressed"]
-[connection signal="body_entered" from="areaFuego" to="." method="_on_area_fuego_body_entered"]
-[connection signal="body_entered" from="areaLiquido" to="." method="_on_area_liquido_body_entered"]
-[connection signal="body_shape_entered" from="areaLiquido" to="." method="_on_area_liquido_body_shape_entered"]
