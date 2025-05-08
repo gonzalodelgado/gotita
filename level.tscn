@@ -1,14 +1,35 @@
 [gd_scene load_steps=5 format=3 uid="uid://c64ue7jw3wbbj"]
 
 [ext_resource type="Script" uid="uid://ihyojh7w614v" path="res://level.gd" id="1_u52ul"]
+[ext_resource type="Texture2D" uid="uid://gyy2pkhcdel2" path="res://imagenes/flor.png" id="2_vonw3"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5xgho"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi3di"]
+radius = 18.0
+height = 58.0
 
 [node name="level" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 3
+script = ExtResource("1_u52ul")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 material = SubResource("CanvasItemMaterial_5xgho")
 position = Vector2(-43, -43)
 polygon = PackedVector2Array(43, 127, 43, 513, 842, 512, 843, 64, 710, 144, 466, 150, 413, 111, 319, 77, 322, 141, 273, 145, 263, 145, 246, 130, 233, 129, 157, 127)
+
+[node name="Polygon2D" type="Polygon2D" parent="CollisionPolygon2D"]
+position = Vector2(43, 43)
+color = Color(0.45, 0.27585, 0.063, 1)
+
+[node name="Objetivo" type="Area2D" parent="."]
+position = Vector2(481, 29)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objetivo"]
+position = Vector2(172, 43)
+shape = SubResource("CapsuleShape2D_oi3di")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Objetivo/CollisionShape2D"]
+texture = ExtResource("2_vonw3")
