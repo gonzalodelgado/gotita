@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/afro-blue-five-003-26720.mp3-de44111c02ab4d5f
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0.0
 bpm=0.0
 beat_count=0
