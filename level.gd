@@ -4,6 +4,7 @@ extends StaticBody2D
 @onready var polygon_2d = $CollisionPolygon2D/Polygon2D
 @export var max_gotitas = 1
 @export var gotita_scene: PackedScene
+@export_enum("LIQUIDO", "GASEOSO", "SOLIDO") var estado_inicial: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,6 +20,7 @@ func _on_timer_gotita_timeout() -> void:
 	var cantidad_gotitas = get_children().filter(func(child): return child.scene_file_path == gotita_scene.resource_path).size()
 	if cantidad_gotitas < max_gotitas:
 		var gotita = gotita_scene.instantiate()
+		gotita.cambiar_estado(estado_inicial)
 		gotita.position.x = 10
 		add_child(gotita)
 
