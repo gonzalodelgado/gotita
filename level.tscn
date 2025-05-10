@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c64ue7jw3wbbj"]
+[gd_scene load_steps=7 format=3 uid="uid://c64ue7jw3wbbj"]
 
 [ext_resource type="Script" uid="uid://ihyojh7w614v" path="res://level.gd" id="1_u52ul"]
+[ext_resource type="PackedScene" uid="uid://cyvt8bj7jo145" path="res://gotita.tscn" id="2_0b4ue"]
 [ext_resource type="Texture2D" uid="uid://gyy2pkhcdel2" path="res://imagenes/flor.png" id="2_vonw3"]
+[ext_resource type="PackedScene" uid="uid://b44i3ij5i4ani" path="res://control_cambio_estado.tscn" id="4_f2txt"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5xgho"]
 
@@ -13,6 +15,8 @@ height = 58.0
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_u52ul")
+max_gotitas = 10
+gotita_scene = ExtResource("2_0b4ue")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 material = SubResource("CanvasItemMaterial_5xgho")
@@ -33,3 +37,31 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Objetivo/CollisionShape2D"]
 texture = ExtResource("2_vonw3")
+
+[node name="TimerGotita" type="Timer" parent="."]
+autostart = true
+
+[node name="ControlCambioEstado" parent="." instance=ExtResource("4_f2txt")]
+offset_left = 655.0
+offset_top = 410.0
+offset_right = 713.0
+offset_bottom = 441.0
+text = "Gota"
+
+[node name="ControlCambioEstado2" parent="." instance=ExtResource("4_f2txt")]
+offset_left = 394.0
+offset_top = 408.0
+offset_right = 452.0
+offset_bottom = 439.0
+text = "Nieve"
+estado = "SOLIDO"
+
+[node name="ControlCambioEstado3" parent="." instance=ExtResource("4_f2txt")]
+offset_left = 150.0
+offset_top = 405.0
+offset_bottom = 436.0
+text = "Fuego"
+estado = "GASEOSO"
+
+[connection signal="body_entered" from="Objetivo" to="." method="_on_objetivo_body_entered"]
+[connection signal="timeout" from="TimerGotita" to="." method="_on_timer_gotita_timeout"]
