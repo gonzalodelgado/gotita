@@ -34,7 +34,7 @@ text = "Líquido"
 
 [node name="Music Loop1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_0hol4")
-volume_db = -4.685
+volume_db = -29.046
 autoplay = true
 parameters/looping = false
 
