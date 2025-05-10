@@ -22,3 +22,9 @@ func _on_timer_gotita_timeout() -> void:
 		gotita.position.x = 10
 		add_child(gotita)
 
+
+func _on_objetivo_body_entered(body:Node2D) -> void:
+	if body.scene_file_path == gotita_scene.resource_path:
+		print("BODY entro objetivo", body)
+		body.queue_free()
+
