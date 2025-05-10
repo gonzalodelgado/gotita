@@ -27,4 +27,3 @@ func _on_objetivo_body_entered(body:Node2D) -> void:
 	if body.scene_file_path == gotita_scene.resource_path:
 		print("BODY entro objetivo", body)
 		body.queue_free()
-

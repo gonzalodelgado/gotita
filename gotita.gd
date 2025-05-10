@@ -3,7 +3,7 @@ extends RigidBody2D
 var dir = 1
 var min_speed = 64
 enum Estados {LIQUIDO, GASEOSO, SOLIDO}
-var estado: Estados = Estados.SOLIDO
+var estado: Estados = Estados.LIQUIDO
 var gravity : Vector2 = ProjectSettings.get_setting("physics/2d/default_gravity_vector")
 var screen_size
 
