@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c64ue7jw3wbbj"]
+[gd_scene load_steps=8 format=3 uid="uid://c64ue7jw3wbbj"]
 
 [ext_resource type="Script" uid="uid://ihyojh7w614v" path="res://level.gd" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://cyvt8bj7jo145" path="res://gotita.tscn" id="2_0b4ue"]
 [ext_resource type="Texture2D" uid="uid://gyy2pkhcdel2" path="res://imagenes/flor.png" id="2_vonw3"]
 [ext_resource type="PackedScene" uid="uid://b44i3ij5i4ani" path="res://control_cambio_estado.tscn" id="4_f2txt"]
+[ext_resource type="FontFile" uid="uid://l1cxloxaligc" path="res://tipografía/Megrim/Megrim.ttf" id="5_f2txt"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5xgho"]
 
@@ -17,7 +18,7 @@ collision_mask = 3
 script = ExtResource("1_u52ul")
 max_gotitas = 10
 gotita_scene = ExtResource("2_0b4ue")
-estado_inicial = "GASEOSO"
+estado_inicial = "LIQUIDO"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 material = SubResource("CanvasItemMaterial_5xgho")
@@ -63,6 +64,15 @@ offset_top = 405.0
 offset_bottom = 436.0
 text = "Fuego"
 estado = "GASEOSO"
+
+[node name="GanasteLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_f2txt")
+theme_override_font_sizes/font_size = 96
+text = "¡GANASTE!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="Objetivo" to="." method="_on_objetivo_body_entered"]
 [connection signal="timeout" from="TimerGotita" to="." method="_on_timer_gotita_timeout"]
