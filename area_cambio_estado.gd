@@ -25,7 +25,8 @@ func get_drag_obj():
 func get_drag_radius():
 	return 24
 
-func init(estado_str):
+func init(estado_str, label_text: String="💧"):
 	dragging = false
 	estado = estado_str
+	$Label.text = label_text
 	return self

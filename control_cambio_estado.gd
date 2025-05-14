@@ -21,7 +21,7 @@ func get_drag_obj():
 	return drag_obj
 
 func start_drag():
-	drag_obj = area_cambio_estado.instantiate().init(estado)
+	drag_obj = area_cambio_estado.instantiate().init(estado, text)
 	get_parent().add_child(drag_obj)
 	drag_obj.dragging = true
 	print("Start Drag", drag_obj)

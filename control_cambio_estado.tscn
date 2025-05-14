@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b44i3ij5i4ani"]
+[gd_scene load_steps=4 format=3 uid="uid://b44i3ij5i4ani"]
 
 [ext_resource type="Script" uid="uid://bq85a7kapnan4" path="res://control_cambio_estado.gd" id="1_0hnth"]
+[ext_resource type="FontFile" uid="uid://dtqy5yvw7g2pc" path="res://tipografía/Noto Color Emoji/NotoColorEmoji-Regular.ttf" id="1_nj67i"]
 [ext_resource type="PackedScene" uid="uid://bok2bmtmo81vj" path="res://area_cambio_estado.tscn" id="2_nj67i"]
 
 [node name="ControlCambioEstado" type="Label"]
@@ -8,7 +9,9 @@ offset_left = 155.0
 offset_top = 409.0
 offset_right = 208.0
 offset_bottom = 440.0
-text = "Líquido"
+theme_override_fonts/font = ExtResource("1_nj67i")
+theme_override_font_sizes/font_size = 48
+text = "🔥 ❄ 🌧"
 script = ExtResource("1_0hnth")
 area_cambio_estado = ExtResource("2_nj67i")
 cantidad = 100

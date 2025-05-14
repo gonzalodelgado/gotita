@@ -42,6 +42,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 			min_speed = 64
 			gravity_scale = 1.0
 			set_collision_mask_value(1, false)
+			$Label.text = "💧"
 		Estados.SOLIDO:
 			physics_material_override.friction = 0.01
 			physics_material_override.bounce = 0.2
@@ -49,12 +50,14 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 			min_speed = 128
 			gravity_scale = 1.0
 			set_collision_mask_value(1, true)
+			$Label.text = "🧊"
 		Estados.GASEOSO:
 			physics_material_override.friction = 0
 			physics_material_override.bounce = 0.1
 			min_speed = 32
 			gravity_scale = -0.4
 			set_collision_mask_value(1, false)
+			$Label.text = "☁"
 
 	if position.y - size <= 2:
 		position.y = size + 3

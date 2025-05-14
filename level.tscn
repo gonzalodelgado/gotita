@@ -48,21 +48,21 @@ offset_left = 655.0
 offset_top = 410.0
 offset_right = 713.0
 offset_bottom = 441.0
-text = "Gota"
+text = "🌧"
 
 [node name="ControlCambioEstado2" parent="." instance=ExtResource("4_f2txt")]
 offset_left = 394.0
 offset_top = 408.0
 offset_right = 452.0
 offset_bottom = 439.0
-text = "Nieve"
+text = "❄"
 estado = "SOLIDO"
 
 [node name="ControlCambioEstado3" parent="." instance=ExtResource("4_f2txt")]
 offset_left = 150.0
 offset_top = 405.0
 offset_bottom = 436.0
-text = "Fuego"
+text = "🔥"
 estado = "GASEOSO"
 
 [node name="GanasteLabel" type="Label" parent="."]
