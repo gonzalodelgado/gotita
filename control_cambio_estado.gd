@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	pass
 
 func get_drag_radius():
-	return 32
+	return 64
 
 func get_drag_obj():
 	return drag_obj
