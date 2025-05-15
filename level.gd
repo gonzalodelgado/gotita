@@ -2,7 +2,7 @@ extends StaticBody2D
 
 @onready var coll_polygon_2d = $CollisionPolygon2D
 @onready var polygon_2d = $CollisionPolygon2D/Polygon2D
-@export var max_gotitas = 1
+@export var max_gotitas = 10
 @export var gotitas_objetivo = 8
 @export var gotita_scene: PackedScene
 @export_enum("LIQUIDO", "GASEOSO", "SOLIDO") var estado_inicial: String
