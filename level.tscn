@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c64ue7jw3wbbj"]
+[gd_scene load_steps=9 format=3 uid="uid://c64ue7jw3wbbj"]
 
 [ext_resource type="Script" uid="uid://ihyojh7w614v" path="res://level.gd" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://cyvt8bj7jo145" path="res://gotita.tscn" id="2_0b4ue"]
 [ext_resource type="Texture2D" uid="uid://gyy2pkhcdel2" path="res://imagenes/flor.png" id="2_vonw3"]
+[ext_resource type="AudioStream" uid="uid://hnils16mtomu" path="res://Audios/drink-332368.mp3" id="4_1ainy"]
 [ext_resource type="PackedScene" uid="uid://b44i3ij5i4ani" path="res://control_cambio_estado.tscn" id="4_f2txt"]
 [ext_resource type="FontFile" uid="uid://l1cxloxaligc" path="res://tipografía/Megrim/Megrim.ttf" id="5_f2txt"]
 
@@ -38,6 +39,9 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Objetivo/CollisionShape2D"]
 texture = ExtResource("2_vonw3")
+
+[node name="Tragar gota" type="AudioStreamPlayer2D" parent="Objetivo"]
+stream = ExtResource("4_1ainy")
 
 [node name="TimerGotita" type="Timer" parent="."]
 autostart = true

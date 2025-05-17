@@ -41,3 +41,4 @@ func _on_objetivo_body_entered(body:Node2D) -> void:
 		print("BODY entro objetivo", body)
 		body.queue_free()
 		gotitas_salvadas += 1
+		$"Objetivo/Tragar gota".play()
