@@ -1,13 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cdsrivfprlqvt"]
 
 [ext_resource type="Script" uid="uid://b2t4k6miop7u0" path="res://juego.gd" id="1_0e48y"]
-[ext_resource type="PackedScene" uid="uid://c64ue7jw3wbbj" path="res://level.tscn" id="2_0e48y"]
 [ext_resource type="AudioStream" uid="uid://bc55x7jlwl24y" path="res://afro-blue-five-003-26720.mp3" id="4_0hol4"]
 
 [node name="Prueba" type="Node2D"]
 script = ExtResource("1_0e48y")
-
-[node name="level" parent="." instance=ExtResource("2_0e48y")]
 
 [node name="BotonGaseoso" type="Button" parent="."]
 offset_left = 138.0
