@@ -6,6 +6,7 @@ enum Estados {LIQUIDO, GASEOSO, SOLIDO}
 var estado: Estados = Estados.LIQUIDO
 var gravity : Vector2 = ProjectSettings.get_setting("physics/2d/default_gravity_vector")
 var screen_size
+signal murio
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,6 +30,9 @@ func _physics_process(delta: float) -> void:
 		dir = -1
 		linear_velocity.x = min_speed * dir
 	position.x = clamp(position.x, 0, screen_size.x)
+	if position.y + size > screen_size.y:
+		murio.emit()
+		queue_free()
 	position.y = clamp(position.y, 0, screen_size.y)
 
 

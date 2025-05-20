@@ -77,5 +77,14 @@ text = "¡GANASTE!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PerdisteLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_f2txt")
+theme_override_font_sizes/font_size = 96
+text = "PERDISTE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="body_entered" from="Objetivo" to="." method="_on_objetivo_body_entered"]
 [connection signal="timeout" from="TimerGotita" to="." method="_on_timer_gotita_timeout"]
