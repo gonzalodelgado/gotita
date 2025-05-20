@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b2t4k6miop7u0" path="res://juego.gd" id="1_0e48y"]
 [ext_resource type="AudioStream" uid="uid://bc55x7jlwl24y" path="res://afro-blue-five-003-26720.mp3" id="4_0hol4"]
 
-[node name="Prueba" type="Node2D"]
+[node name="Juego" type="Node2D"]
 script = ExtResource("1_0e48y")
 
 [node name="BotonGaseoso" type="Button" parent="."]
