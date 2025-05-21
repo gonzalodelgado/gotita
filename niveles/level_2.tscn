@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://las03vfmbnng"]
+
+[ext_resource type="PackedScene" uid="uid://c64ue7jw3wbbj" path="res://level.tscn" id="1_jg0dc"]
+
+[node name="level 2" instance=ExtResource("1_jg0dc")]
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+position = Vector2(-44, 22)
+polygon = PackedVector2Array(43, 127, 42, 544, 840, 548, 843, 140, 531, 137, 586, 535, 451, 534, 431, 141, 322, 141, 273, 145, 263, 145, 246, 130, 233, 129, 157, 127)
+
+[node name="CollisionShape2D" parent="Objetivo" index="0"]
+position = Vector2(177, 108)
