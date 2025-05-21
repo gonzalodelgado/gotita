@@ -86,5 +86,7 @@ text = "PERDISTE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="gano_nivel" from="." to="." method="_on_gano_nivel"]
+[connection signal="perdio_nivel" from="." to="." method="_on_perdio_nivel"]
 [connection signal="body_entered" from="Objetivo" to="." method="_on_objetivo_body_entered"]
 [connection signal="timeout" from="TimerGotita" to="." method="_on_timer_gotita_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdsrivfprlqvt"]
+[gd_scene load_steps=3 format=3 uid="uid://cdsrivfprlqvt"]
 
 [ext_resource type="Script" uid="uid://b2t4k6miop7u0" path="res://juego.gd" id="1_0e48y"]
 [ext_resource type="AudioStream" uid="uid://bc55x7jlwl24y" path="res://afro-blue-five-003-26720.mp3" id="4_0hol4"]
@@ -37,6 +37,10 @@ volume_db = -29.046
 autoplay = true
 parameters/looping = false
 
+[node name="SiguienteNivelTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="pressed" from="BotonGaseoso" to="." method="_on_boton_gaseoso_pressed"]
 [connection signal="pressed" from="BotonSolido" to="." method="_on_boton_solido_pressed"]
 [connection signal="pressed" from="BotonLiquido" to="." method="_on_boton_liquido_pressed"]
+[connection signal="timeout" from="SiguienteNivelTimer" to="." method="_on_siguiente_nivel_timer_timeout"]
