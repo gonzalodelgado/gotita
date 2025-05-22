@@ -37,10 +37,24 @@ volume_db = -29.046
 autoplay = true
 parameters/looping = false
 
-[node name="SiguienteNivelTimer" type="Timer" parent="."]
-one_shot = true
+[node name="BotonSiguienteNivel" type="Button" parent="."]
+z_index = 10
+offset_left = 184.0
+offset_top = 303.0
+offset_right = 329.0
+offset_bottom = 351.0
+text = "Siguiente Nivel"
+
+[node name="BotonReintentar" type="Button" parent="."]
+z_index = 10
+offset_left = 413.0
+offset_top = 303.0
+offset_right = 558.0
+offset_bottom = 351.0
+text = "Otra Vez"
 
 [connection signal="pressed" from="BotonGaseoso" to="." method="_on_boton_gaseoso_pressed"]
 [connection signal="pressed" from="BotonSolido" to="." method="_on_boton_solido_pressed"]
 [connection signal="pressed" from="BotonLiquido" to="." method="_on_boton_liquido_pressed"]
-[connection signal="timeout" from="SiguienteNivelTimer" to="." method="_on_siguiente_nivel_timer_timeout"]
+[connection signal="pressed" from="BotonSiguienteNivel" to="." method="_on_boton_siguiente_nivel_pressed"]
+[connection signal="pressed" from="BotonReintentar" to="." method="_on_boton_reintentar_pressed"]

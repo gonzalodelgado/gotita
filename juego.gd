@@ -15,13 +15,28 @@ func _process(_delta: float) -> void:
 	pass
 
 func cargar_nivel():
+	$BotonReintentar.visible = false
+	$BotonSiguienteNivel.visible = false
 	if is_instance_valid(nivel_actual):
 		remove_child(nivel_actual)
 		nivel_actual.queue_free()
 	nivel_actual = ResourceLoader.load("%s/%s" % [niveles_dir, nombres_niveles[indice_nivel]]).instantiate()
 	add_child(nivel_actual)
-	nivel_actual.gano_nivel.connect($SiguienteNivelTimer.start)
+	nivel_actual.gano_nivel.connect(_on_gano_nivel)
+	nivel_actual.perdio_nivel.connect(_on_perdio_nivel)
 
-func _on_siguiente_nivel_timer_timeout() -> void:
+func _on_gano_nivel() -> void:
+	$BotonSiguienteNivel.visible = true
+	$BotonReintentar.text = "Otra Vez"
+	$BotonReintentar.visible = true
+
+func _on_perdio_nivel() -> void:
+	$BotonReintentar.visible = true
+	$BotonReintentar.text = "Otra Oportunidad"
+
+func _on_boton_siguiente_nivel_pressed() -> void:
 	indice_nivel = (indice_nivel + 1) % nombres_niveles.size()
+	cargar_nivel()
+
+func _on_boton_reintentar_pressed() -> void:
 	cargar_nivel()
