@@ -33,3 +33,13 @@ func drop():
 
 func _input(event):
 	drag_helper.handle_input_for_drag(event, self)
+
+
+func _on_mouse_entered() -> void:
+	var mouse_enter_tween = get_tree().create_tween()
+	mouse_enter_tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.3)
+
+
+func _on_mouse_exited() -> void:
+	var mouse_exit_tween = get_tree().create_tween()
+	mouse_exit_tween.tween_property(self, "scale", Vector2(1, 1), 0.1)

@@ -9,10 +9,17 @@ offset_left = 155.0
 offset_top = 409.0
 offset_right = 208.0
 offset_bottom = 440.0
+mouse_filter = 1
+mouse_default_cursor_shape = 6
 theme_override_fonts/font = ExtResource("1_nj67i")
 theme_override_font_sizes/font_size = 48
 text = "🔥 ❄ 🌧"
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("1_0hnth")
 area_cambio_estado = ExtResource("2_nj67i")
 cantidad = 100
 estado = "LIQUIDO"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
