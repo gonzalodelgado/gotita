@@ -44,7 +44,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 			physics_material_override.absorbent = true
 			physics_material_override.bounce = 0
 			min_speed = 64
-			gravity_scale = 1.0
+			gravity_scale = 1.8
 			set_collision_mask_value(1, false)
 			$Label.text = "💧"
 		Estados.SOLIDO:
@@ -52,7 +52,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 			physics_material_override.bounce = 0.2
 			physics_material_override.absorbent = true
 			min_speed = 128
-			gravity_scale = 1.0
+			gravity_scale = 2.5
 			set_collision_mask_value(1, true)
 			$Label.text = "🧊"
 		Estados.GASEOSO:

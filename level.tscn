@@ -86,6 +86,10 @@ text = "PERDISTE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ContadorLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="gano_nivel" from="." to="." method="_on_gano_nivel"]
 [connection signal="perdio_nivel" from="." to="." method="_on_perdio_nivel"]
 [connection signal="body_entered" from="Objetivo" to="." method="_on_objetivo_body_entered"]

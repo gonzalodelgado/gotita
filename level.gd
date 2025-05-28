@@ -21,14 +21,18 @@ signal perdio_nivel
 func _ready() -> void:
 	$GanasteLabel.visible = false
 	$PerdisteLabel.visible = false
+	$ContadorLabel.visible = true
+	$ContadorLabel.text = "Gotitas: " + str(gotitas_salvadas) + "/" + str(gotitas_objetivo)
 	polygon_2d.polygon = coll_polygon_2d.polygon
 	polygon_2d.offset = coll_polygon_2d.position
 	gotitas_generadas = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	$ContadorLabel.text = "Gotitas: " + str(gotitas_salvadas) + "/" + str(gotitas_objetivo)
 	if estado == Estados.PLAY and gotitas_salvadas >= gotitas_objetivo:
 		estado = Estados.WIN
+		$ContadorLabel.visible = false
 		gano_nivel.emit()
 
 	if estado == Estados.PLAY and gotitas_perdidas > gotitas_objetivo:
