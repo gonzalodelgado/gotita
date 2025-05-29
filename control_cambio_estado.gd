@@ -24,10 +24,20 @@ func start_drag():
 	drag_obj = area_cambio_estado.instantiate().init(estado, text)
 	get_parent().add_child(drag_obj)
 	drag_obj.dragging = true
-	print("Start Drag", drag_obj)
+	drag_obj.visible = false
+	print("Start Drag ", drag_obj)
+
+func drag_validated():
+	drag_obj.visible = true
+
+func cancel_drag():
+	print("Cancel Drag ", drag_obj)
+	drag_obj.queue_free()
 
 func drop():
 	# TODO: verificar lugar donde se hace el drop sea válido
+	print("Drop ", self)
+	drag_obj.visible = true
 	drag_obj.dragging = false
 	drag_obj = null
 
