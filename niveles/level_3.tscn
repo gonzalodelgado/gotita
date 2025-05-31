@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=3 uid="uid://bfr0yptpvfp1y"]
+
+[ext_resource type="Script" uid="uid://ihyojh7w614v" path="res://level.gd" id="1_tkd3e"]
+[ext_resource type="PackedScene" uid="uid://cyvt8bj7jo145" path="res://gotita.tscn" id="2_gwq1b"]
+[ext_resource type="Texture2D" uid="uid://gyy2pkhcdel2" path="res://imagenes/flor.png" id="3_33qod"]
+[ext_resource type="AudioStream" uid="uid://hnils16mtomu" path="res://Audios/drink-332368.mp3" id="4_ne4t6"]
+[ext_resource type="PackedScene" uid="uid://b44i3ij5i4ani" path="res://control_cambio_estado.tscn" id="5_eyo8d"]
+[ext_resource type="FontFile" uid="uid://l1cxloxaligc" path="res://tipografía/Megrim/Megrim.ttf" id="6_x4mue"]
+[ext_resource type="AudioStream" uid="uid://fpeac0jvdlk3" path="res://Audios/FX Gotitas/Win Fx2.ogg" id="7_dgdmc"]
+[ext_resource type="AudioStream" uid="uid://vejdwes5fn1d" path="res://Audios/FX Gotitas/Lose Fx.ogg" id="8_6ogcw"]
+[ext_resource type="PackedScene" uid="uid://dotgaeexed0rx" path="res://obstáculos/arena.tscn" id="9_gwq1b"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5xgho"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi3di"]
+radius = 18.0
+height = 58.0
+
+[node name="level" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_tkd3e")
+gotita_scene = ExtResource("2_gwq1b")
+estado_inicial = "LIQUIDO"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+material = SubResource("CanvasItemMaterial_5xgho")
+position = Vector2(-43, -43)
+polygon = PackedVector2Array(43, 127, 43, 513, 842, 512, 843, 64, 710, 202, 635, 201, 528, 210, 488, 207, 452, 216, 399, 219, 348, 218, 295, 218, 232, 230, 128, 225)
+
+[node name="Polygon2D" type="Polygon2D" parent="CollisionPolygon2D"]
+position = Vector2(43, 43)
+color = Color(0.45, 0.27585, 0.063, 1)
+
+[node name="Objetivo" type="Area2D" parent="."]
+position = Vector2(481, 29)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objetivo"]
+position = Vector2(169, 97)
+shape = SubResource("CapsuleShape2D_oi3di")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Objetivo/CollisionShape2D"]
+texture = ExtResource("3_33qod")
+
+[node name="Tragar gota" type="AudioStreamPlayer2D" parent="Objetivo"]
+stream = ExtResource("4_ne4t6")
+
+[node name="TimerGotita" type="Timer" parent="."]
+autostart = true
+
+[node name="ControlCambioEstado" parent="." instance=ExtResource("5_eyo8d")]
+offset_left = 655.0
+offset_top = 410.0
+offset_right = 713.0
+offset_bottom = 441.0
+text = "🌧"
+
+[node name="ControlCambioEstado2" parent="." instance=ExtResource("5_eyo8d")]
+offset_left = 394.0
+offset_top = 408.0
+offset_right = 452.0
+offset_bottom = 439.0
+text = "❄"
+estado = "SOLIDO"
+
+[node name="ControlCambioEstado3" parent="." instance=ExtResource("5_eyo8d")]
+offset_left = 150.0
+offset_top = 405.0
+offset_bottom = 436.0
+text = "🔥"
+estado = "GASEOSO"
+
+[node name="GanasteLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("6_x4mue")
+theme_override_font_sizes/font_size = 96
+text = "¡GANASTE!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PerdisteLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("6_x4mue")
+theme_override_font_sizes/font_size = 96
+text = "PERDISTE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContadorLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Win FX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_dgdmc")
+volume_db = -3.0
+
+[node name="Lose FX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_6ogcw")
+volume_db = -3.0
+
+[node name="Arena" parent="." instance=ExtResource("9_gwq1b")]
+position = Vector2(354, 181)
+
+[connection signal="gano_nivel" from="." to="." method="_on_gano_nivel"]
+[connection signal="perdio_nivel" from="." to="." method="_on_perdio_nivel"]
+[connection signal="body_entered" from="Objetivo" to="." method="_on_objetivo_body_entered"]
+[connection signal="timeout" from="TimerGotita" to="." method="_on_timer_gotita_timeout"]
