@@ -2,7 +2,7 @@ extends RigidBody2D
 
 var dir = 1
 var min_speed = 64
-enum Estados {LIQUIDO, GASEOSO, SOLIDO}
+enum Estados {LIQUIDO, GASEOSO, SOLIDO, HUNDIR}
 var estado: Estados = Estados.LIQUIDO
 var gravity : Vector2 = ProjectSettings.get_setting("physics/2d/default_gravity_vector")
 var screen_size
@@ -31,10 +31,12 @@ func _physics_process(delta: float) -> void:
 		linear_velocity.x = min_speed * dir
 	position.x = clamp(position.x, 0, screen_size.x)
 	if position.y + size > screen_size.y:
-		murio.emit()
-		queue_free()
+		morir()
 	position.y = clamp(position.y, 0, screen_size.y)
 
+func morir():
+	murio.emit()
+	queue_free()
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
 	var size = $CollisionShape2D.shape.radius
@@ -78,3 +80,12 @@ func cambiar_estado(estado_str: String):
 			set_collision_mask_value(1, false)
 			$Label.text = "☁"
 			$"Cloudy FX".play()
+		Estados.HUNDIR:
+			print("HUNDIR ", self)
+			physics_material_override.friction = 0.85
+			physics_material_override.absorbent = true
+			physics_material_override.bounce = 0
+			set_collision_mask_value(1, false)
+			set_collision_mask_value(2, false)
+			min_speed = 0
+			gravity_scale = 0.09
