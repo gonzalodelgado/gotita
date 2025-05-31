@@ -46,7 +46,10 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 
 
 func cambiar_estado(estado_str: String):
-	estado = Estados.get(estado_str)
+	var nuevo_estado = Estados.get(estado_str)
+	if estado == nuevo_estado:
+		return
+	estado = nuevo_estado
 
 	match estado:
 		Estados.LIQUIDO:
