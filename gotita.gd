@@ -57,6 +57,7 @@ func cambiar_estado(estado_str: String):
 			gravity_scale = 1.8
 			set_collision_mask_value(1, false)
 			$Label.text = "💧"
+			$"Bubbly FX".play()
 		Estados.SOLIDO:
 			physics_material_override.friction = 0.01
 			physics_material_override.bounce = 0.2
@@ -65,6 +66,7 @@ func cambiar_estado(estado_str: String):
 			gravity_scale = 2.5
 			set_collision_mask_value(1, true)
 			$Label.text = "🧊"
+			$"Icy FX".play()
 		Estados.GASEOSO:
 			physics_material_override.friction = 0
 			physics_material_override.bounce = 0.1
@@ -72,3 +74,4 @@ func cambiar_estado(estado_str: String):
 			gravity_scale = -0.4
 			set_collision_mask_value(1, false)
 			$Label.text = "☁"
+			$"Cloudy FX".play()

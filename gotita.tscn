@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyvt8bj7jo145"]
+[gd_scene load_steps=9 format=3 uid="uid://cyvt8bj7jo145"]
 
 [ext_resource type="Texture2D" uid="uid://cwhq31jkdm4ba" path="res://icon.svg" id="1_swqj7"]
 [ext_resource type="Script" uid="uid://dltgu7rk6fk8p" path="res://gotita.gd" id="1_tevhy"]
 [ext_resource type="FontFile" uid="uid://dtqy5yvw7g2pc" path="res://tipografía/Noto Color Emoji/NotoColorEmoji-Regular.ttf" id="3_4lcmr"]
+[ext_resource type="AudioStream" uid="uid://kipugxs50xob" path="res://Audios/FX Gotitas/Cloudy Fx.ogg" id="4_phkm3"]
+[ext_resource type="AudioStream" uid="uid://bpnpmtwddutpw" path="res://Audios/FX Gotitas/Icy Fx.ogg" id="5_ofuka"]
+[ext_resource type="AudioStream" uid="uid://7h03c66dbqf5" path="res://Audios/FX Gotitas/Bubble Fx.ogg" id="6_216ug"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_swqj7"]
 friction = 0.15
@@ -38,3 +41,12 @@ theme_override_font_sizes/font_size = 32
 text = "💧"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Cloudy FX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_phkm3")
+
+[node name="Icy FX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ofuka")
+
+[node name="Bubbly FX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_216ug")
