@@ -38,6 +38,16 @@ func _physics_process(delta: float) -> void:
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
 	var size = $CollisionShape2D.shape.radius
+	if position.y - size <= 2:
+		position.y = size + 3
+
+	if estado != Estados.GASEOSO and position.y - size <= 2:
+		state.apply_impulse(gravity*2)
+
+
+func cambiar_estado(estado_str: String):
+	estado = Estados.get(estado_str)
+
 	match estado:
 		Estados.LIQUIDO:
 			physics_material_override.friction = 0.15
@@ -62,13 +72,3 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 			gravity_scale = -0.4
 			set_collision_mask_value(1, false)
 			$Label.text = "☁"
-
-	if position.y - size <= 2:
-		position.y = size + 3
-
-	if estado != Estados.GASEOSO and position.y - size <= 2:
-		state.apply_impulse(gravity*2)
-
-
-func cambiar_estado(estado_str: String):
-	estado = Estados.get(estado_str)
