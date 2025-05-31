@@ -5,8 +5,11 @@
 [node name="level 2" instance=ExtResource("1_jg0dc")]
 
 [node name="CollisionPolygon2D" parent="." index="0"]
-position = Vector2(-44, 22)
-polygon = PackedVector2Array(43, 127, 42, 544, 840, 548, 843, 140, 531, 137, 586, 535, 451, 534, 431, 141, 322, 141, 273, 145, 263, 145, 246, 130, 233, 129, 157, 127)
+position = Vector2(0, 0)
+polygon = PackedVector2Array(82, 248, 0, 257, 1, 545, 840, 548, 843, 140, 531, 137, 586, 535, 451, 534, 433, 190, 340, 158, 306, 154, 280, 167, 253, 175, 232, 194, 178, 229)
+
+[node name="Polygon2D" parent="CollisionPolygon2D" index="0"]
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" parent="Objetivo" index="0"]
-position = Vector2(177, 108)
+position = Vector2(236, 80)

@@ -24,7 +24,8 @@ func _ready() -> void:
 	$ContadorLabel.visible = true
 	$ContadorLabel.text = "Gotitas: " + str(gotitas_salvadas) + "/" + str(gotitas_objetivo)
 	polygon_2d.polygon = coll_polygon_2d.polygon
-	polygon_2d.offset = coll_polygon_2d.position
+	polygon_2d.offset = Vector2(coll_polygon_2d.position)
+	polygon_2d.position = Vector2(polygon_2d.position)
 	gotitas_generadas = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
