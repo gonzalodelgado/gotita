@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyvt8bj7jo145"]
+[gd_scene load_steps=10 format=3 uid="uid://cyvt8bj7jo145"]
 
 [ext_resource type="Texture2D" uid="uid://cwhq31jkdm4ba" path="res://icon.svg" id="1_swqj7"]
 [ext_resource type="Script" uid="uid://dltgu7rk6fk8p" path="res://gotita.gd" id="1_tevhy"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://kipugxs50xob" path="res://Audios/FX Gotitas/Cloudy Fx.ogg" id="4_phkm3"]
 [ext_resource type="AudioStream" uid="uid://bpnpmtwddutpw" path="res://Audios/FX Gotitas/Icy Fx.ogg" id="5_ofuka"]
 [ext_resource type="AudioStream" uid="uid://7h03c66dbqf5" path="res://Audios/FX Gotitas/Bubble Fx.ogg" id="6_216ug"]
+[ext_resource type="AudioStream" uid="uid://bs7fork0eq818" path="res://Audios/FX Gotitas/Missed Fx.ogg" id="7_ofuka"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_swqj7"]
 friction = 0.15
@@ -50,3 +51,6 @@ stream = ExtResource("5_ofuka")
 
 [node name="Bubbly FX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_216ug")
+
+[node name="Perdida Gotita" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ofuka")
