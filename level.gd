@@ -60,8 +60,9 @@ func _on_gano_nivel() -> void:
 	$GanasteLabel.position.x = screen_size.x / 2 - $GanasteLabel.size.x / 2
 	$GanasteLabel.position.y = screen_size.y / 2 - $GanasteLabel.size.y / 2
 	$GanasteLabel.visible = true
-
+	$"Win FX".play()
 func _on_perdio_nivel() -> void:
 	$PerdisteLabel.position.x = screen_size.x / 2 - $PerdisteLabel.size.x / 2
 	$PerdisteLabel.position.y = screen_size.y / 2 - $PerdisteLabel.size.y / 2
 	$PerdisteLabel.visible = true
+	$"Lose FX".play()

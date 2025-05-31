@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://vejdwes5fn1d"
+path="res://.godot/imported/Lose Fx.ogg-406f8357cbe27360ec0ef446b9dd12a0.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audios/FX Gotitas/Lose Fx.ogg"
+dest_files=["res://.godot/imported/Lose Fx.ogg-406f8357cbe27360ec0ef446b9dd12a0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdsrivfprlqvt"]
+[gd_scene load_steps=4 format=3 uid="uid://cdsrivfprlqvt"]
 
 [ext_resource type="Script" uid="uid://b2t4k6miop7u0" path="res://juego.gd" id="1_0e48y"]
+[ext_resource type="AudioStream" uid="uid://dkwraadqlla81" path="res://Audios/FX Gotitas/UI Menu.ogg" id="3_epypp"]
 [ext_resource type="AudioStream" uid="uid://bc55x7jlwl24y" path="res://afro-blue-five-003-26720.mp3" id="4_0hol4"]
 
 [node name="Juego" type="Node2D"]
@@ -52,6 +53,10 @@ offset_top = 303.0
 offset_right = 558.0
 offset_bottom = 351.0
 text = "Otra Vez"
+
+[node name="UI Menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_epypp")
+volume_db = -3.0
 
 [connection signal="pressed" from="BotonGaseoso" to="." method="_on_boton_gaseoso_pressed"]
 [connection signal="pressed" from="BotonSolido" to="." method="_on_boton_solido_pressed"]

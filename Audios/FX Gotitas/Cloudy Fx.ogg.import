@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://kipugxs50xob"
+path="res://.godot/imported/Cloudy Fx.ogg-4fc71c1b88a0a535f9ad5a4c7e464bc6.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audios/FX Gotitas/Cloudy Fx.ogg"
+dest_files=["res://.godot/imported/Cloudy Fx.ogg-4fc71c1b88a0a535f9ad5a4c7e464bc6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

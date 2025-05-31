@@ -37,6 +37,8 @@ func _on_perdio_nivel() -> void:
 func _on_boton_siguiente_nivel_pressed() -> void:
 	indice_nivel = (indice_nivel + 1) % nombres_niveles.size()
 	cargar_nivel()
+	$"UI Menu".play()
 
 func _on_boton_reintentar_pressed() -> void:
 	cargar_nivel()
+	$"UI Menu".play()

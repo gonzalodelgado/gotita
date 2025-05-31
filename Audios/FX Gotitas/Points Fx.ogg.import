@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://wqaou8sd2dse"
+path="res://.godot/imported/Points Fx.ogg-d7e24b7117ea3797a113eb5e968856ff.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audios/FX Gotitas/Points Fx.ogg"
+dest_files=["res://.godot/imported/Points Fx.ogg-d7e24b7117ea3797a113eb5e968856ff.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bs7fork0eq818"
+path="res://.godot/imported/Missed Fx.ogg-8e66949775781b86870c61c88bc3f58e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audios/FX Gotitas/Missed Fx.ogg"
+dest_files=["res://.godot/imported/Missed Fx.ogg-8e66949775781b86870c61c88bc3f58e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

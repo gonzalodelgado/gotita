@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cjphyooryj8i0"
+path="res://.godot/imported/Win fx.ogg-2932da11b343a3a079757f306341a873.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audios/FX Gotitas/Win fx.ogg"
+dest_files=["res://.godot/imported/Win fx.ogg-2932da11b343a3a079757f306341a873.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
