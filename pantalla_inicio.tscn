@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccf027c40ij4u"]
+
+[ext_resource type="Script" uid="uid://b58vxq7r1wawr" path="res://pantalla_inicio.gd" id="1_70vh5"]
+[ext_resource type="Texture2D" uid="uid://bp3dq0wlp20sa" path="res://imagenes/titulo_ph.png" id="2_deuh0"]
+
+[node name="PantallaInicio" type="Node2D"]
+script = ExtResource("1_70vh5")
+
+[node name="Menu" type="VBoxContainer" parent="."]
+offset_left = 308.0
+offset_top = 304.0
+offset_right = 674.0
+offset_bottom = 477.0
+alignment = 1
+metadata/_edit_group_ = true
+
+[node name="BotonJugar" type="Button" parent="Menu"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "Jugar"
+
+[node name="BotonSalir" type="Button" parent="Menu"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "Salir
+"
+
+[node name="TituloPh" type="Sprite2D" parent="."]
+position = Vector2(415, 132)
+texture = ExtResource("2_deuh0")
+
+[connection signal="pressed" from="Menu/BotonJugar" to="." method="_on_boton_jugar_pressed"]
+[connection signal="pressed" from="Menu/BotonSalir" to="." method="_on_boton_salir_pressed"]

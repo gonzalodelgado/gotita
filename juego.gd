@@ -8,9 +8,9 @@ const niveles_dir = "res://niveles"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	nombres_niveles = ResourceLoader.list_directory(niveles_dir)
-	cargar_nivel()
+	$BotonReintentar.visible = false
+	$BotonSiguienteNivel.visible = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
 
@@ -42,3 +42,12 @@ func _on_boton_siguiente_nivel_pressed() -> void:
 func _on_boton_reintentar_pressed() -> void:
 	cargar_nivel()
 	$"UI Menu".play()
+
+func _on_pantalla_inicio_jugar_pressed() -> void:
+	$"UI Menu".play()
+	$PantallaInicio.visible = false
+	cargar_nivel()
+
+
+func _on_pantalla_inicio_salir_pressed() -> void:
+	get_tree().quit()
