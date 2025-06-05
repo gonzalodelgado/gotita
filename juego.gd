@@ -10,6 +10,7 @@ func _ready() -> void:
 	nombres_niveles = ResourceLoader.list_directory(niveles_dir)
 	$BotonReintentar.visible = false
 	$BotonSiguienteNivel.visible = false
+	$BotonSalirAlMenu.visible = false
 
 func _process(_delta: float) -> void:
 	pass
@@ -17,6 +18,7 @@ func _process(_delta: float) -> void:
 func cargar_nivel():
 	$BotonReintentar.visible = false
 	$BotonSiguienteNivel.visible = false
+	$BotonSalirAlMenu.visible = false
 	if is_instance_valid(nivel_actual):
 		remove_child(nivel_actual)
 		nivel_actual.queue_free()
@@ -33,6 +35,7 @@ func _on_gano_nivel() -> void:
 func _on_perdio_nivel() -> void:
 	$BotonReintentar.visible = true
 	$BotonReintentar.text = "Otra Oportunidad"
+	$BotonSalirAlMenu.visible = true
 
 func _on_boton_siguiente_nivel_pressed() -> void:
 	indice_nivel = (indice_nivel + 1) % nombres_niveles.size()
@@ -51,3 +54,15 @@ func _on_pantalla_inicio_jugar_pressed() -> void:
 
 func _on_pantalla_inicio_salir_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_boton_salir_pressed() -> void:
+	$"UI Menu".play()
+	$BotonReintentar.visible = false
+	$BotonSiguienteNivel.visible = false
+	$BotonSalirAlMenu.visible = false
+	$PantallaInicio.visible = true
+	if is_instance_valid(nivel_actual):
+		remove_child(nivel_actual)
+		nivel_actual.queue_free()
+	indice_nivel = 0
