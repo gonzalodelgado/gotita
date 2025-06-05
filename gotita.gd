@@ -37,7 +37,6 @@ func _physics_process(delta: float) -> void:
 func morir():
 	murio.emit()
 	queue_free()
-	$"Perdida Gotita".play()
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
 	var size = $CollisionShape2D.shape.radius

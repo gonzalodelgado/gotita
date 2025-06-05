@@ -47,6 +47,7 @@ func _on_timer_gotita_timeout() -> void:
 		gotita.position.x = 10
 		add_child(gotita)
 		gotitas_generadas += 1
+		gotita.murio.connect($PerdidaGotita.play)
 		gotita.murio.connect(func(): gotitas_perdidas += 1)
 
 func _on_objetivo_body_entered(body:Node2D) -> void:
