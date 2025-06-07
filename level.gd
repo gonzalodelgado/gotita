@@ -13,7 +13,12 @@ enum Estados {PLAY, WIN, LOSE}
 var gotitas_generadas = 0
 var gotitas_salvadas = 0
 var gotitas_perdidas = 0
-
+var estado_generador_index = 0
+var labels_por_estado = {
+	"LIQUIDO": "💧",
+	"SOLIDO": "🧊",
+	"GASEOSO": "☁"
+	}
 signal gano_nivel
 signal perdio_nivel
 
@@ -27,8 +32,9 @@ func _ready() -> void:
 	polygon_2d.offset = Vector2(coll_polygon_2d.position)
 	polygon_2d.position = Vector2(polygon_2d.position)
 	gotitas_generadas = 0
+	if $GeneradorGotitas:
+		$GeneradorGotitas.text = "💧"
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	$ContadorLabel.text = "Gotitas: " + str(gotitas_salvadas) + "/" + str(gotitas_objetivo)
 	if estado == Estados.PLAY and gotitas_salvadas >= gotitas_objetivo:
@@ -40,15 +46,36 @@ func _process(_delta: float) -> void:
 		estado = Estados.LOSE
 		perdio_nivel.emit()
 
+
+func generar_gotita(pos, estado):
+	var gotita = gotita_scene.instantiate()
+	gotita.cambiar_estado(estado)
+	gotita.position = Vector2(pos)
+	add_child(gotita)
+	gotitas_generadas += 1
+	# gotita.murio.connect($PerdidaGotita.play)
+	gotita.murio.connect(func(): gotitas_perdidas += 1)
+
+func _input(event):
+	if $GeneradorGotitas:
+		if event is InputEventKey and event.is_pressed():
+			var index_offset = 0
+			if event.keycode == KEY_LEFT or event.keycode == KEY_UP:
+				index_offset = -1
+			elif event.keycode == KEY_RIGHT or event.keycode == KEY_DOWN:
+				index_offset = 1
+			if index_offset:
+				estado_generador_index = (estado_generador_index + index_offset) % 3
+				var nuevo_estado = labels_por_estado.keys()[estado_generador_index]
+				$GeneradorGotitas.text = labels_por_estado[nuevo_estado]
+		elif event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+			generar_gotita(event.position, labels_por_estado.keys()[estado_generador_index])
+		elif event is InputEventMouseMotion:
+			$GeneradorGotitas.position = Vector2(event.position)
+
 func _on_timer_gotita_timeout() -> void:
 	if gotitas_generadas < max_gotitas:
-		var gotita = gotita_scene.instantiate()
-		gotita.cambiar_estado(estado_inicial)
-		gotita.position.x = 10
-		add_child(gotita)
-		gotitas_generadas += 1
-		gotita.murio.connect($PerdidaGotita.play)
-		gotita.murio.connect(func(): gotitas_perdidas += 1)
+		generar_gotita(Vector2(10, 0), estado_inicial)
 
 func _on_objetivo_body_entered(body:Node2D) -> void:
 	if body.scene_file_path == gotita_scene.resource_path:
@@ -62,6 +89,7 @@ func _on_gano_nivel() -> void:
 	$GanasteLabel.position.y = screen_size.y / 2 - $GanasteLabel.size.y / 2
 	$GanasteLabel.visible = true
 	$"Win FX".play()
+
 func _on_perdio_nivel() -> void:
 	$PerdisteLabel.position.x = screen_size.x / 2 - $PerdisteLabel.size.x / 2
 	$PerdisteLabel.position.y = screen_size.y / 2 - $PerdisteLabel.size.y / 2

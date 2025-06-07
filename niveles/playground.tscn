@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ygh6lob58s7k"]
+[gd_scene load_steps=13 format=3 uid="uid://ygh6lob58s7k"]
 
 [ext_resource type="Script" uid="uid://ihyojh7w614v" path="res://level.gd" id="1_v7dth"]
 [ext_resource type="PackedScene" uid="uid://cyvt8bj7jo145" path="res://gotita.tscn" id="2_pi42a"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://fpeac0jvdlk3" path="res://Audios/FX Gotitas/Win Fx2.ogg" id="7_f7pug"]
 [ext_resource type="AudioStream" uid="uid://vejdwes5fn1d" path="res://Audios/FX Gotitas/Lose Fx.ogg" id="8_jgc46"]
 [ext_resource type="PackedScene" uid="uid://dotgaeexed0rx" path="res://obstáculos/arena.tscn" id="9_c55fi"]
+[ext_resource type="FontFile" uid="uid://dtqy5yvw7g2pc" path="res://tipografía/Noto Color Emoji/NotoColorEmoji-Regular.ttf" id="10_2vjos"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5xgho"]
 
@@ -103,6 +104,12 @@ volume_db = -3.0
 
 [node name="Arena" parent="." instance=ExtResource("9_c55fi")]
 position = Vector2(452, 303)
+
+[node name="GeneradorGotitas" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("10_2vjos")
+theme_override_font_sizes/font_size = 24
 
 [connection signal="gano_nivel" from="." to="." method="_on_gano_nivel"]
 [connection signal="perdio_nivel" from="." to="." method="_on_perdio_nivel"]
