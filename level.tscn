@@ -104,7 +104,23 @@ volume_db = -3.0
 [node name="PerdidaGotita" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_i2t4f")
 
+[node name="TimerNivel" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="TimerNivelLabel" type="Label" parent="."]
+offset_left = 700.0
+offset_top = 16.0
+offset_right = 790.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0.439793, 0.777313, 1, 1)
+theme_override_fonts/font = ExtResource("5_f2txt")
+theme_override_font_sizes/font_size = 36
+text = "00:00"
+
 [connection signal="gano_nivel" from="." to="." method="_on_gano_nivel"]
 [connection signal="perdio_nivel" from="." to="." method="_on_perdio_nivel"]
 [connection signal="body_entered" from="Objetivo" to="." method="_on_objetivo_body_entered"]
 [connection signal="timeout" from="TimerGotita" to="." method="_on_timer_gotita_timeout"]
+[connection signal="timeout" from="TimerNivel" to="." method="perder"]

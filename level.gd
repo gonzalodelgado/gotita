@@ -36,6 +36,9 @@ func _ready() -> void:
 		$GeneradorGotitas.text = "💧"
 
 func _process(_delta: float) -> void:
+	var minutes_left = $TimerNivel.time_left / 60.0
+	var seconds_left = int($TimerNivel.time_left) % 60
+	$TimerNivelLabel.text = "%02d:%02d" % [minutes_left, seconds_left]
 	$ContadorLabel.text = "Gotitas: " + str(gotitas_salvadas) + "/" + str(gotitas_objetivo)
 	if estado == Estados.PLAY and gotitas_salvadas >= gotitas_objetivo:
 		estado = Estados.WIN
@@ -43,9 +46,11 @@ func _process(_delta: float) -> void:
 		gano_nivel.emit()
 
 	if estado == Estados.PLAY and gotitas_perdidas > gotitas_objetivo:
-		estado = Estados.LOSE
-		perdio_nivel.emit()
+		perder()
 
+func perder() -> void:
+	estado = Estados.LOSE
+	perdio_nivel.emit()
 
 func generar_gotita(pos, estado):
 	var gotita = gotita_scene.instantiate()
