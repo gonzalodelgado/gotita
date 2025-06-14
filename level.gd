@@ -6,6 +6,7 @@ extends StaticBody2D
 @export var max_gotitas = 10
 @export var gotitas_objetivo = 8
 @export var gotita_scene: PackedScene
+@export var modo_creativo: bool = false
 @export_enum("LIQUIDO", "GASEOSO", "SOLIDO") var estado_inicial: String
 
 enum Estados {PLAY, WIN, LOSE}
@@ -40,12 +41,12 @@ func _process(_delta: float) -> void:
 	var seconds_left = int($TimerNivel.time_left) % 60
 	$TimerNivelLabel.text = "%02d:%02d" % [minutes_left, seconds_left]
 	$ContadorLabel.text = "Gotitas: " + str(gotitas_salvadas) + "/" + str(gotitas_objetivo)
-	if estado == Estados.PLAY and gotitas_salvadas >= gotitas_objetivo:
+	if estado == Estados.PLAY and gotitas_salvadas >= gotitas_objetivo and not modo_creativo:
 		estado = Estados.WIN
 		$ContadorLabel.visible = false
 		gano_nivel.emit()
 
-	if estado == Estados.PLAY and gotitas_perdidas > gotitas_objetivo:
+	if estado == Estados.PLAY and gotitas_perdidas > gotitas_objetivo and not modo_creativo:
 		perder()
 
 func perder() -> void:
