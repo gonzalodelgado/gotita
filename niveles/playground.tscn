@@ -113,6 +113,20 @@ offset_bottom = 29.0
 theme_override_fonts/font = ExtResource("10_2vjos")
 theme_override_font_sizes/font_size = 24
 
+[node name="TimerNivel" type="Timer" parent="."]
+wait_time = 60.0
+
+[node name="TimerNivelLabel" type="Label" parent="."]
+visible = false
+offset_left = 700.0
+offset_top = 16.0
+offset_right = 790.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0.439793, 0.777313, 1, 1)
+theme_override_fonts/font = ExtResource("6_yjl7g")
+theme_override_font_sizes/font_size = 36
+text = "00:00"
+
 [connection signal="gano_nivel" from="." to="." method="_on_gano_nivel"]
 [connection signal="perdio_nivel" from="." to="." method="_on_perdio_nivel"]
 [connection signal="body_entered" from="Objetivo" to="." method="_on_objetivo_body_entered"]
