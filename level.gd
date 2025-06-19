@@ -29,9 +29,11 @@ func _ready() -> void:
 	$PerdisteLabel.visible = false
 	$ContadorLabel.visible = true
 	$ContadorLabel.text = "Gotitas: " + str(gotitas_salvadas) + "/" + str(gotitas_objetivo)
-	polygon_2d.polygon = coll_polygon_2d.polygon
-	polygon_2d.offset = Vector2(coll_polygon_2d.position)
-	polygon_2d.position = Vector2(polygon_2d.position)
+	for coll_poly in find_children("*", "CollisionPolygon2D", false):
+		polygon_2d = coll_poly.find_child("Polygon2D")
+		polygon_2d.polygon = coll_poly.polygon
+		polygon_2d.offset = Vector2(coll_polygon_2d.position)
+		polygon_2d.position = Vector2(polygon_2d.position)
 	gotitas_generadas = 0
 	if $GeneradorGotitas:
 		$GeneradorGotitas.text = "💧"
