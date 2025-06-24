@@ -6,6 +6,7 @@ enum Estados {LIQUIDO, GASEOSO, SOLIDO, HUNDIR}
 var estado: Estados = Estados.LIQUIDO
 var gravity : Vector2 = ProjectSettings.get_setting("physics/2d/default_gravity_vector")
 var screen_size
+var prev_velocity : Vector2 = Vector2(0, 0)
 signal murio
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +19,10 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	# Si el hielo cae de muy alto se rompe
+	if prev_velocity.y - linear_velocity.y > 600 and estado == Estados.SOLIDO:
+		morir()
+
 	var size = $CollisionShape2D.shape.radius
 
 	if abs(linear_velocity.x) < min_speed:
@@ -33,6 +38,7 @@ func _physics_process(delta: float) -> void:
 	if position.y + size > screen_size.y:
 		morir()
 	position.y = clamp(position.y, 0, screen_size.y)
+	prev_velocity = Vector2(linear_velocity)
 
 func morir():
 	murio.emit()
