@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://c64ue7jw3wbbj"]
+[gd_scene load_steps=10 format=3 uid="uid://c64ue7jw3wbbj"]
 
 [ext_resource type="Script" uid="uid://ihyojh7w614v" path="res://level.gd" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://cyvt8bj7jo145" path="res://gotita.tscn" id="2_0b4ue"]
-[ext_resource type="Texture2D" uid="uid://gyy2pkhcdel2" path="res://imagenes/flor.png" id="2_vonw3"]
-[ext_resource type="AudioStream" uid="uid://hnils16mtomu" path="res://Audios/drink-332368.mp3" id="4_1ainy"]
+[ext_resource type="PackedScene" uid="uid://130ox2ihecri" path="res://objetivos/objetivo.tscn" id="3_km5ld"]
 [ext_resource type="PackedScene" uid="uid://b44i3ij5i4ani" path="res://control_cambio_estado.tscn" id="4_f2txt"]
 [ext_resource type="FontFile" uid="uid://l1cxloxaligc" path="res://tipografía/Megrim/Megrim.ttf" id="5_f2txt"]
 [ext_resource type="AudioStream" uid="uid://fpeac0jvdlk3" path="res://Audios/FX Gotitas/Win Fx2.ogg" id="7_km5ld"]
@@ -12,11 +11,7 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5xgho"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi3di"]
-radius = 18.0
-height = 58.0
-
-[node name="level" type="StaticBody2D"]
+[node name="level2" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_u52ul")
@@ -32,19 +27,8 @@ polygon = PackedVector2Array(43, 127, 43, 513, 842, 512, 843, 64, 710, 144, 466,
 position = Vector2(43, 43)
 color = Color(0.45, 0.27585, 0.063, 1)
 
-[node name="Objetivo" type="Area2D" parent="."]
+[node name="Flor" parent="." instance=ExtResource("3_km5ld")]
 position = Vector2(481, 29)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objetivo"]
-position = Vector2(172, 43)
-shape = SubResource("CapsuleShape2D_oi3di")
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Objetivo/CollisionShape2D"]
-texture = ExtResource("2_vonw3")
-
-[node name="Tragar gota" type="AudioStreamPlayer2D" parent="Objetivo"]
-stream = ExtResource("4_1ainy")
 
 [node name="TimerGotita" type="Timer" parent="."]
 autostart = true
@@ -121,6 +105,6 @@ text = "00:00"
 
 [connection signal="gano_nivel" from="." to="." method="_on_gano_nivel"]
 [connection signal="perdio_nivel" from="." to="." method="_on_perdio_nivel"]
-[connection signal="body_entered" from="Objetivo" to="." method="_on_objetivo_body_entered"]
+[connection signal="gotita_salvada" from="Flor" to="." method="_on_gotita_salvada"]
 [connection signal="timeout" from="TimerGotita" to="." method="_on_timer_gotita_timeout"]
 [connection signal="timeout" from="TimerNivel" to="." method="perder"]

@@ -85,13 +85,6 @@ func _on_timer_gotita_timeout() -> void:
 	if gotitas_generadas < max_gotitas:
 		generar_gotita(Vector2(10, 0), estado_inicial)
 
-func _on_objetivo_body_entered(body:Node2D) -> void:
-	if body.scene_file_path == gotita_scene.resource_path:
-		print("BODY entro objetivo", body)
-		body.queue_free()
-		gotitas_salvadas += 1
-		$"Objetivo/Tragar gota".play()
-
 func _on_gano_nivel() -> void:
 	$GanasteLabel.position.x = screen_size.x / 2 - $GanasteLabel.size.x / 2
 	$GanasteLabel.position.y = screen_size.y / 2 - $GanasteLabel.size.y / 2
@@ -103,3 +96,6 @@ func _on_perdio_nivel() -> void:
 	$PerdisteLabel.position.y = screen_size.y / 2 - $PerdisteLabel.size.y / 2
 	$PerdisteLabel.visible = true
 	$"Lose FX".play()
+
+func _on_gotita_salvada() -> void:
+	gotitas_salvadas += 1

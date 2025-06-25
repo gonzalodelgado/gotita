@@ -11,5 +11,5 @@ polygon = PackedVector2Array(82, 248, 0, 257, 1, 545, 840, 548, 843, 140, 531, 1
 [node name="Polygon2D" parent="CollisionPolygon2D" index="0"]
 position = Vector2(0, 0)
 
-[node name="CollisionShape2D" parent="Objetivo" index="0"]
-position = Vector2(236, 80)
+[node name="Flor" parent="." index="1"]
+position = Vector2(490, 65)
