@@ -1,0 +1,122 @@
+[gd_scene load_steps=11 format=3 uid="uid://dlwna0g127dhh"]
+
+[ext_resource type="Script" uid="uid://ihyojh7w614v" path="res://level.gd" id="1_55e3w"]
+[ext_resource type="PackedScene" uid="uid://cyvt8bj7jo145" path="res://gotita.tscn" id="2_uvxc6"]
+[ext_resource type="PackedScene" uid="uid://b44i3ij5i4ani" path="res://control_cambio_estado.tscn" id="3_8mm3e"]
+[ext_resource type="FontFile" uid="uid://l1cxloxaligc" path="res://tipografía/Megrim/Megrim.ttf" id="4_kts6h"]
+[ext_resource type="AudioStream" uid="uid://fpeac0jvdlk3" path="res://Audios/FX Gotitas/Win Fx2.ogg" id="5_1irvw"]
+[ext_resource type="AudioStream" uid="uid://vejdwes5fn1d" path="res://Audios/FX Gotitas/Lose Fx.ogg" id="6_xwq24"]
+[ext_resource type="AudioStream" uid="uid://bs7fork0eq818" path="res://Audios/FX Gotitas/Missed Fx.ogg" id="7_agwsr"]
+[ext_resource type="PackedScene" uid="uid://130ox2ihecri" path="res://objetivos/objetivo.tscn" id="8_m8ipt"]
+[ext_resource type="PackedScene" uid="uid://dotgaeexed0rx" path="res://obstáculos/arena.tscn" id="9_q22j1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5xgho"]
+
+[node name="level" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_55e3w")
+gotita_scene = ExtResource("2_uvxc6")
+estado_inicial = "LIQUIDO"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+material = SubResource("CanvasItemMaterial_5xgho")
+position = Vector2(-50, -45)
+polygon = PackedVector2Array(43, 127, 59, 172, 691, 190, 718, 144, 466, 150, 246, 130, 233, 129, 157, 127)
+
+[node name="Polygon2D" type="Polygon2D" parent="CollisionPolygon2D"]
+position = Vector2(43, 43)
+color = Color(0.45, 0.27585, 0.063, 1)
+
+[node name="TimerGotita" type="Timer" parent="."]
+autostart = true
+
+[node name="ControlCambioEstado" parent="." instance=ExtResource("3_8mm3e")]
+offset_left = 655.0
+offset_top = 410.0
+offset_right = 713.0
+offset_bottom = 441.0
+text = "🌧"
+
+[node name="ControlCambioEstado2" parent="." instance=ExtResource("3_8mm3e")]
+offset_left = 394.0
+offset_top = 408.0
+offset_right = 452.0
+offset_bottom = 439.0
+text = "❄"
+estado = "SOLIDO"
+
+[node name="ControlCambioEstado3" parent="." instance=ExtResource("3_8mm3e")]
+offset_left = 150.0
+offset_top = 405.0
+offset_bottom = 436.0
+text = "🔥"
+estado = "GASEOSO"
+
+[node name="GanasteLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("4_kts6h")
+theme_override_font_sizes/font_size = 96
+text = "¡GANASTE!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PerdisteLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("4_kts6h")
+theme_override_font_sizes/font_size = 96
+text = "PERDISTE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContadorLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Win FX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1irvw")
+volume_db = -3.0
+
+[node name="Lose FX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xwq24")
+volume_db = -3.0
+
+[node name="PerdidaGotita" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_agwsr")
+
+[node name="TimerNivel" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="TimerNivelLabel" type="Label" parent="."]
+offset_left = 700.0
+offset_top = 16.0
+offset_right = 790.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0.439793, 0.777313, 1, 1)
+theme_override_fonts/font = ExtResource("4_kts6h")
+theme_override_font_sizes/font_size = 36
+text = "00:00"
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="."]
+material = SubResource("CanvasItemMaterial_5xgho")
+position = Vector2(100, 212)
+polygon = PackedVector2Array(59, 143, 64, 178, 277.653, 182.089, 691, 190, 718, 144, 466, 150)
+
+[node name="Polygon2D" type="Polygon2D" parent="CollisionPolygon2D4"]
+position = Vector2(43, 43)
+color = Color(0.45, 0.27585, 0.063, 1)
+
+[node name="Flor" parent="." instance=ExtResource("8_m8ipt")]
+position = Vector2(18, 283)
+
+[node name="Arena" parent="." instance=ExtResource("9_q22j1")]
+position = Vector2(573, 109)
+
+[connection signal="gano_nivel" from="." to="." method="_on_gano_nivel"]
+[connection signal="perdio_nivel" from="." to="." method="_on_perdio_nivel"]
+[connection signal="timeout" from="TimerGotita" to="." method="_on_timer_gotita_timeout"]
+[connection signal="timeout" from="TimerNivel" to="." method="perder"]

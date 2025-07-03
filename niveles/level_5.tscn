@@ -1,26 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyapyoa0g8unt"]
+[gd_scene load_steps=10 format=3 uid="uid://bfr0yptpvfp1y"]
 
-[ext_resource type="Script" uid="uid://ihyojh7w614v" path="res://level.gd" id="1_a7kcb"]
-[ext_resource type="PackedScene" uid="uid://cyvt8bj7jo145" path="res://gotita.tscn" id="2_3s55m"]
-[ext_resource type="PackedScene" uid="uid://b44i3ij5i4ani" path="res://control_cambio_estado.tscn" id="3_aflls"]
-[ext_resource type="FontFile" uid="uid://l1cxloxaligc" path="res://tipografía/Megrim/Megrim.ttf" id="4_2kmrq"]
-[ext_resource type="AudioStream" uid="uid://fpeac0jvdlk3" path="res://Audios/FX Gotitas/Win Fx2.ogg" id="5_ttfac"]
-[ext_resource type="AudioStream" uid="uid://vejdwes5fn1d" path="res://Audios/FX Gotitas/Lose Fx.ogg" id="6_ieap4"]
-[ext_resource type="PackedScene" uid="uid://130ox2ihecri" path="res://objetivos/objetivo.tscn" id="7_ajvpu"]
+[ext_resource type="Script" uid="uid://ihyojh7w614v" path="res://level.gd" id="1_5tl4g"]
+[ext_resource type="PackedScene" uid="uid://cyvt8bj7jo145" path="res://gotita.tscn" id="2_lxkfd"]
+[ext_resource type="PackedScene" uid="uid://b44i3ij5i4ani" path="res://control_cambio_estado.tscn" id="3_o8y61"]
+[ext_resource type="FontFile" uid="uid://l1cxloxaligc" path="res://tipografía/Megrim/Megrim.ttf" id="4_fodw7"]
+[ext_resource type="AudioStream" uid="uid://fpeac0jvdlk3" path="res://Audios/FX Gotitas/Win Fx2.ogg" id="5_nyocb"]
+[ext_resource type="AudioStream" uid="uid://vejdwes5fn1d" path="res://Audios/FX Gotitas/Lose Fx.ogg" id="6_xxaci"]
+[ext_resource type="PackedScene" uid="uid://dotgaeexed0rx" path="res://obstáculos/arena.tscn" id="7_34u5q"]
+[ext_resource type="PackedScene" uid="uid://130ox2ihecri" path="res://objetivos/objetivo.tscn" id="8_6qrxg"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5xgho"]
 
 [node name="level" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_a7kcb")
-gotita_scene = ExtResource("2_3s55m")
+script = ExtResource("1_5tl4g")
+gotita_scene = ExtResource("2_lxkfd")
 estado_inicial = "LIQUIDO"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 material = SubResource("CanvasItemMaterial_5xgho")
 position = Vector2(-43, -43)
-polygon = PackedVector2Array(32, 161, 43, 513, 842, 512, 856, 101, 841, 126, 830, 139, 816, 153, 803, 164, 783, 177, 764.063, 183.485, 710, 202, 635, 201, 528, 210, 330, 235, 245, 243, 179, 230, 137, 214, 82, 193)
+polygon = PackedVector2Array(43, 127, 43, 513, 842, 512, 843, 64, 710, 202, 635, 201, 528, 210, 488, 207, 452, 216, 399, 219, 348, 218, 295, 218, 232, 230, 128, 225)
 
 [node name="Polygon2D" type="Polygon2D" parent="CollisionPolygon2D"]
 position = Vector2(43, 43)
@@ -29,14 +30,14 @@ color = Color(0.45, 0.27585, 0.063, 1)
 [node name="TimerGotita" type="Timer" parent="."]
 autostart = true
 
-[node name="ControlCambioEstado" parent="." instance=ExtResource("3_aflls")]
+[node name="ControlCambioEstado" parent="." instance=ExtResource("3_o8y61")]
 offset_left = 655.0
 offset_top = 410.0
 offset_right = 713.0
 offset_bottom = 441.0
 text = "🌧"
 
-[node name="ControlCambioEstado2" parent="." instance=ExtResource("3_aflls")]
+[node name="ControlCambioEstado2" parent="." instance=ExtResource("3_o8y61")]
 offset_left = 394.0
 offset_top = 408.0
 offset_right = 452.0
@@ -44,7 +45,7 @@ offset_bottom = 439.0
 text = "❄"
 estado = "SOLIDO"
 
-[node name="ControlCambioEstado3" parent="." instance=ExtResource("3_aflls")]
+[node name="ControlCambioEstado3" parent="." instance=ExtResource("3_o8y61")]
 offset_left = 150.0
 offset_top = 405.0
 offset_bottom = 436.0
@@ -54,7 +55,7 @@ estado = "GASEOSO"
 [node name="GanasteLabel" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("4_2kmrq")
+theme_override_fonts/font = ExtResource("4_fodw7")
 theme_override_font_sizes/font_size = 96
 text = "¡GANASTE!"
 horizontal_alignment = 1
@@ -63,7 +64,7 @@ vertical_alignment = 1
 [node name="PerdisteLabel" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("4_2kmrq")
+theme_override_fonts/font = ExtResource("4_fodw7")
 theme_override_font_sizes/font_size = 96
 text = "PERDISTE"
 horizontal_alignment = 1
@@ -74,16 +75,18 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Win FX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_ttfac")
+stream = ExtResource("5_nyocb")
 volume_db = -3.0
 
 [node name="Lose FX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_ieap4")
+stream = ExtResource("6_xxaci")
 volume_db = -3.0
 
-[node name="Flor" parent="." instance=ExtResource("7_ajvpu")]
-position = Vector2(554, 82)
-estado_requerido = "SOLIDO"
+[node name="Arena" parent="." instance=ExtResource("7_34u5q")]
+position = Vector2(354, 181)
+
+[node name="Flor" parent="." instance=ExtResource("8_6qrxg")]
+position = Vector2(466, 86)
 
 [node name="TimerNivel" type="Timer" parent="."]
 wait_time = 60.0
@@ -96,7 +99,7 @@ offset_top = 16.0
 offset_right = 790.0
 offset_bottom = 56.0
 theme_override_colors/font_color = Color(0.439793, 0.777313, 1, 1)
-theme_override_fonts/font = ExtResource("4_2kmrq")
+theme_override_fonts/font = ExtResource("4_fodw7")
 theme_override_font_sizes/font_size = 36
 text = "00:00"
 

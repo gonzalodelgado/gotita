@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfr0yptpvfp1y"]
+[gd_scene load_steps=9 format=3 uid="uid://y6wcmn0hsnc5"]
 
 [ext_resource type="Script" uid="uid://ihyojh7w614v" path="res://level.gd" id="1_tkd3e"]
 [ext_resource type="PackedScene" uid="uid://cyvt8bj7jo145" path="res://gotita.tscn" id="2_gwq1b"]
@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://fpeac0jvdlk3" path="res://Audios/FX Gotitas/Win Fx2.ogg" id="7_dgdmc"]
 [ext_resource type="AudioStream" uid="uid://vejdwes5fn1d" path="res://Audios/FX Gotitas/Lose Fx.ogg" id="8_6ogcw"]
 [ext_resource type="PackedScene" uid="uid://130ox2ihecri" path="res://objetivos/objetivo.tscn" id="8_tkd3e"]
-[ext_resource type="PackedScene" uid="uid://dotgaeexed0rx" path="res://obstáculos/arena.tscn" id="9_gwq1b"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5xgho"]
 
@@ -21,7 +20,7 @@ estado_inicial = "LIQUIDO"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 material = SubResource("CanvasItemMaterial_5xgho")
 position = Vector2(-43, -43)
-polygon = PackedVector2Array(43, 127, 43, 513, 842, 512, 843, 64, 710, 202, 635, 201, 528, 210, 488, 207, 452, 216, 399, 219, 348, 218, 295, 218, 232, 230, 128, 225)
+polygon = PackedVector2Array(26, 258, 43, 513, 842, 512, 853, 228, 822, 245, 794, 245, 763, 240, 714, 194, 660, 130, 586, 177, 215.662, 356.442, 198, 365, 173, 361, 156, 358, 126, 350, 94, 329, 78, 315, 70, 308)
 
 [node name="Polygon2D" type="Polygon2D" parent="CollisionPolygon2D"]
 position = Vector2(43, 43)
@@ -82,11 +81,9 @@ volume_db = -3.0
 stream = ExtResource("8_6ogcw")
 volume_db = -3.0
 
-[node name="Arena" parent="." instance=ExtResource("9_gwq1b")]
-position = Vector2(354, 181)
-
 [node name="Flor" parent="." instance=ExtResource("8_tkd3e")]
-position = Vector2(466, 86)
+position = Vector2(444, -13)
+estado_requerido = "GASEOSO"
 
 [node name="TimerNivel" type="Timer" parent="."]
 wait_time = 60.0
