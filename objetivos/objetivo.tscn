@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://130ox2ihecri"]
 
 [ext_resource type="Script" uid="uid://bb5jmc38rfmof" path="res://objetivos/objetivo.gd" id="1_30lcx"]
-[ext_resource type="Texture2D" uid="uid://gyy2pkhcdel2" path="res://imagenes/flor.png" id="1_b13en"]
+[ext_resource type="FontFile" uid="uid://dtqy5yvw7g2pc" path="res://tipografía/Noto Color Emoji/NotoColorEmoji-Regular.ttf" id="2_30lcx"]
 [ext_resource type="AudioStream" uid="uid://hnils16mtomu" path="res://Audios/drink-332368.mp3" id="2_518bu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oi3di"]
@@ -11,13 +11,19 @@ height = 58.0
 [node name="Objetivo" type="Area2D"]
 script = ExtResource("1_30lcx")
 
+[node name="Label" type="Label" parent="."]
+offset_left = 148.0
+offset_top = 18.0
+offset_right = 208.0
+offset_bottom = 75.0
+theme_override_fonts/font = ExtResource("2_30lcx")
+theme_override_font_sizes/font_size = 48
+text = "🌷"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(172, 43)
 shape = SubResource("CapsuleShape2D_oi3di")
 metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-texture = ExtResource("1_b13en")
 
 [node name="Tragar gota" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_518bu")

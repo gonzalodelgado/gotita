@@ -5,7 +5,13 @@ signal gotita_salvada
 
 
 func _ready() -> void:
-	pass
+	match estado_requerido:
+		"LIQUIDO":
+			$Label.text = "🌷"
+		"SOLIDO":
+			$Label.text = "🥤"
+		"GASEOSO":
+			$Label.text = "🌞"
 
 
 func _process(_delta: float) -> void:
