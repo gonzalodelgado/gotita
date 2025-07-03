@@ -120,3 +120,4 @@ position = Vector2(573, 109)
 [connection signal="perdio_nivel" from="." to="." method="_on_perdio_nivel"]
 [connection signal="timeout" from="TimerGotita" to="." method="_on_timer_gotita_timeout"]
 [connection signal="timeout" from="TimerNivel" to="." method="perder"]
+[connection signal="gotita_salvada" from="Flor" to="." method="_on_gotita_salvada"]

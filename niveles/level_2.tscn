@@ -103,3 +103,4 @@ text = "00:00"
 [connection signal="gano_nivel" from="." to="." method="_on_gano_nivel"]
 [connection signal="perdio_nivel" from="." to="." method="_on_perdio_nivel"]
 [connection signal="timeout" from="TimerGotita" to="." method="_on_timer_gotita_timeout"]
+[connection signal="gotita_salvada" from="Flor" to="." method="_on_gotita_salvada"]
